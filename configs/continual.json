@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "persistent_frames": 4,
+  "dedup_hamming_distance": 6,
+  "minimum_confidence": 0.7,
+  "minimum_margin": 0.04,
+  "novelty_distance": 0.3,
+  "training_batch_size": 50,
+  "crop_dedup_hamming_distance": 1,
+  "crop_dedup_mean_abs_difference": 0.025,
+  "crop_minimum_frame_tiles": 5,
+  "crop_checkpoint_frames": 100
+}

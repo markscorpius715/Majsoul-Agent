@@ -1,0 +1,10 @@
+{
+  "source": "datasets\\暗杠.jpg",
+  "sha256": "bd40eba0e3dadbf50d6317743c3038285d10038d72e8e81057b61a61e871e083",
+  "label": "wind_south",
+  "template": "artifacts\\templates\\glyphs\\wind_south\\user-20261007-ankan-left.png",
+  "roi": "seat_left",
+  "roi_config": "configs/roi.steam.yaml",
+  "rotation": -90,
+  "review": "Visually inspected upright source crop and binary glyph; reads south."
+}

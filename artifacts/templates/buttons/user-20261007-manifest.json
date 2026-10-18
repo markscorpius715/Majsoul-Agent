@@ -1,0 +1,93 @@
+[
+  {
+    "label": "nuki",
+    "source": "datasets/拔北.jpg",
+    "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+    "box": [
+      1188,
+      1123,
+      1511,
+      1227
+    ],
+    "output": "artifacts\\templates\\buttons\\nuki\\user-20261007.png",
+    "review": "visually reviewed; action icon, not result overlay"
+  },
+  {
+    "label": "abort",
+    "source": "datasets/流局.jpg",
+    "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+    "box": [
+      805,
+      1123,
+      1125,
+      1226
+    ],
+    "output": "artifacts\\templates\\buttons\\abort\\user-20261007.png",
+    "review": "visually reviewed; action icon, not result overlay"
+  },
+  {
+    "label": "riichi",
+    "source": "datasets/立直.jpg",
+    "source_sha256": "cb1974b00b9366f923a93fa9a7e10263bbba3cb571565d77ebe6ffd3c8738a7a",
+    "box": [
+      1226,
+      1098,
+      1522,
+      1224
+    ],
+    "output": "artifacts\\templates\\buttons\\riichi\\user-20261007.png",
+    "review": "visually reviewed; action icon, not result overlay"
+  },
+  {
+    "label": "pass",
+    "source": "datasets/拔北.jpg",
+    "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+    "box": [
+      1735,
+      1123,
+      1825,
+      1194
+    ],
+    "output": "artifacts\\templates\\buttons\\pass\\user-20261007.png",
+    "review": "visible skip glyph component; same segmentation as runtime"
+  },
+  {
+    "label": "tsumo",
+    "source": "datasets/自摸.png",
+    "source_sha256": "772649abd03d6413e9f0b072146097ad5fa579ca2c4d070168cb54e4ad082eb6",
+    "box": [
+      1189,
+      1123,
+      1511,
+      1226
+    ],
+    "output": "artifacts/templates/buttons/tsumo/user-20261007.png",
+    "review": "visually reviewed self-draw action icon"
+  },
+  {
+    "label": "ron",
+    "source": "和.png",
+    "source_sha256": "95f5f80fa010ef32d6343fd1c09679e67f4affc08c598a6f9a60e1909ee5d03d",
+    "box": [
+      1215,
+      1123,
+      1511,
+      1213
+    ],
+    "output": "artifacts/templates/buttons/ron/user-20261007.png",
+    "review": "visually reviewed action icon; user identified 和 as ron"
+  },
+  {
+    "label": "pon",
+    "source": "和.png",
+    "source_sha256": "95f5f80fa010ef32d6343fd1c09679e67f4affc08c598a6f9a60e1909ee5d03d",
+    "box": [
+      904,
+      1123,
+      1022,
+      1194
+    ],
+    "output": "artifacts/templates/buttons/pon/user-20261007.png",
+    "review": "visually reviewed action icon; user identified 和 as ron"
+  }
+]

@@ -1,0 +1,167 @@
+# Mahjong Soul Steam client live-chain configuration. All relative paths are resolved relative to the project root.
+window_title_regex: "雀魂"
+# Exclude browsers, editors, and conversation windows whose titles also contain "雀魂".
+window_class_regex: "^UnityWndClass$"
+poll_seconds: 0.25            # Main loop polling interval, (0, 5] seconds
+stable_frames: 2              # Number of consecutive stable frames required for state submission, >=1
+layout_confirmations: 2       # Number of consecutive confirmations required to lock the seat layout, >=2
+projection: auto              # auto or one of stretch/fit_width_*/fit_height_*; must be explicitly chosen when aspect-ratio drift exceeds the threshold
+classifier: cnn               # The live path explicitly requires the gold-label CNN; missing torch/weight loading failure errors out directly, without silently falling back to the template
+# Gold-label enhanced D (2026-10-02 manually gold-labeled set, convnext-tiny, seed 42)
+# sha256=3a55640c837ace66843198832b4573301afe6b8db3f66027be748c0b3de9fcfa
+# labels=37 classes (m/p/s 1-9, 0m/0p/0s, 1z-7z), preprocessing BGR→RGB 224x224 ImageNet normalization
+cnn_checkpoint: artifacts/tile-augment-20261002/runs/D_s42/checkpoint.pt
+cnn_expected:
+  model_name: convnext_tiny
+  experiment: D
+  seed: 42
+  sha256: 3a55640c837ace66843198832b4573301afe6b8db3f66027be748c0b3de9fcfa
+read_scores: false            # The live main flow does not read each player's score; scores remain unavailable and do not block layout/state/decision
+lifecycle_ui: configs/collect.steam.yaml  # Both modes share UI anchors, confirmations, and final result recognition
+tile_templates: artifacts/templates/tiles
+glyph_templates: artifacts/templates/glyphs
+roi: configs/roi.steam.yaml   # 2026-10-07 manual recalibration (2582×1550 diagnostic screen); the old roi.yaml is retained for golden tests
+vision: configs/vision.steam.yaml
+countdown: configs/countdown.steam.yaml
+numeric_ocr: configs/numeric-ocr.steam.yaml # Local recognition of remaining tile count/honba/riichi sticks; missing model or dependency errors out directly
+rules: configs/sanma.json
+menu: configs/menu.steam.yaml
+artifacts_root: artifacts/live
+match_end_silence_seconds: 90     # Silence watchdog: reports an error and pauses, and cannot serve as evidence of match-end success
+persistent_issue_seconds: 10      # Observation continuously incomplete for this duration → pause automatic execution
+unknown_review:
+  continual_config: configs/continual.json  # 3–5 stable-frame threshold, currently 4 frames
+  maximum_sample_gap_seconds: 2
+  maximum_visual_distance: 0.05  # Perceptual hash candidates are rechecked with glyph descriptors, not recognition confidence
+  geometry_tolerance: 0.02
+  maximum_cases_per_session: 20
+  maximum_candidates_per_frame: 16
+riichi_selection:
+  bright_minimum: 170
+  enabled_ratio: [0.90, 1.10]
+  disabled_ratio: [0.45, 0.75]
+  brightness_percentile: 90
+  target_tolerance: 0.02
+  cancel_marker_manifest: artifacts/templates/ui-selection/cancel-20261010.json
+  cancel_marker_minimum_score: 0.90
+  cancel_marker_minimum_margin: 0.05
+  cancel_marker_regions: [countdown]
+riichi_detection:
+  enabled: true
+  confirmations: 3
+# The Agent's last fallback rung (2026-10-18 user decisions). Judged only from our own hand
+# area and recognized buttons: a recognized ron/tsumo is clicked; on our own turn the drawn
+# tile is discarded (tsumogiri), even with riichi/pass buttons shown; PASS only in a call
+# window and never over a candidate that looks like a win button.
+# Fallback order: model -> local efficiency -> this -> client timeout.
+# Timing follows the client's 7+20 control (rules turn_seconds/reserve_seconds/
+# fallback_turn_seconds): 7 s base per turn, a 20 s reserve shared by all turns of a hand
+# and restored each hand, then 5 s turns. The on-screen reading is the authority.
+emergency:
+  enabled: true
+  timeout_seconds: 12             # absolute upper bound after the window opened
+  verification_seconds: 2
+  maximum_input_age: 1.5
+  quantization_seconds: 1         # the integer clock display may round up
+  lead_seconds: 1.5               # fire this long before the turn's ordinary end
+  click_seconds: 0.5              # never start input with less than this left
+  reserve_per_turn_seconds: 2     # an ordinary turn may spend this much shared reserve
+  maximum_turn_seconds: 10        # fire at the latest this long after the window opened
+  minimum_turn_seconds: 5         # if the base was lost to lag, keep this long from first sight (reserve permitting)
+# 2026-10-18: the Agent owns all input; this watchdog only restarts a crashed or hung
+# Agent (warm standby first) and never plays. It replaces the takeover supervisor.
+watchdog:
+  enabled: true
+  heartbeat_seconds: 2            # Agent capture heartbeat cadence
+  stall_seconds: 8                # restart a ready Agent that is silent this long
+  startup_seconds: 120            # model loading limit
+  recognition_seconds: 30         # Agent table-start recognition window; it then restarts and joins
+  restart_limit: 10               # restarts per match before the watchdog gives up
+  restart_backoff_seconds: 1
+  restart_backoff_max_seconds: 10
+  warm_standby: true              # keep a loaded Agent copy that can take over at once
+  standby_delay_seconds: 15
+  poll_seconds: 0.1
+  stop_grace_seconds: 0.5
+  max_matches: 0                  # play matches back to back; 0 = until STOP/Ctrl+C
+# Reviewed in-game popups (away-from-keyboard, connection) the Agent may dismiss itself.
+modal_manifest: artifacts/templates/protection/manifest.json
+# Retired takeover supervisor (protection.run_protected): kept for reference, not used by `run`.
+protection:
+  enabled: false
+  poll_seconds: 0.1
+  observer_seconds: 0.2
+  heartbeat_seconds: 2
+  observation_seconds: 2
+  startup_seconds: 30
+  recognition_seconds: 30       # User agreement: the Agent recognizes the start of the hand, retries continuously for about 30 seconds, then takes over
+  maximum_operation_seconds: 8
+  shortest_turn_seconds: 5
+  takeover_margin_seconds: 2.5
+  quantization_seconds: 1
+  stop_grace_seconds: 0.1
+  worker_retry_seconds: 0.5
+  modal_manifest: artifacts/templates/protection/manifest.json
+  # Temporary takeover and verified handback (2026-10-14); values match code defaults
+  recovery_enabled: true          # false = any Agent failure locks the client for the rest of the match
+  warm_rejoin: true               # Pre-load an inactive observe-only standby Agent while the Agent plays
+  rejoin_delay_seconds: 1.0       # Retry delay after a failed handback; doubles per flap up to the maximum
+  rejoin_backoff_max_seconds: 20.0
+  rejoin_startup_seconds: 90.0    # Rejoin Agent process must finish loading within this window
+  rejoin_stall_seconds: 10.0      # Active rejoin Agent without progress is retired; also standby respawn delay after handback
+  handback_stable_frames: 3       # Consecutive validated opponent-turn frames before readiness (raised after flaps)
+  handback_stable_seconds: 1.5    # Minimum span covered by those frames
+  handback_ready_max_age: 1.0     # Readiness signal older than this is ignored
+  handback_release_seconds: 15.0  # Budget for the protector to verify client automatic options OFF
+  handbacks_per_hand: 2
+  handbacks_per_match: 8          # Exhausted budget leaves the client in control for the rest of the match
+  same_reason_limit: 4            # Same failure reason this many times also exhausts the recovery budget
+  soft_failure_limit: 4           # Consecutive no-input soft failures before takeover
+  soft_failure_dedupe_seconds: 1.0
+  prematch_retries: 3             # Agent restarts allowed before the match is first recognized
+  flap_window_seconds: 20.0       # Trip within this time of a handback counts as a flap
+decision:
+  # 2026-10-18 user decision: DeepSeek only. Jev failed 4/4 live; deepseek-flash measured
+  # p50 0.98 s / p95 1.49 s on a real 27.7 KB decision (tools/deepseek_ping.py, 20 runs).
+  policy: deepseek                # auto|jev|deepseek; auto = Jev primary + hedged DeepSeek
+  hedge_seconds: 1.0              # auto only: start DeepSeek if Jev is still silent
+  local_fallback_seconds: 0.8     # model gets deadline - this; then the local efficiency rung answers
+  always_win: true                # a legal ron/tsumo is taken without asking the model
+  shanten_guard: true             # without a visible riichi threat, shanten-losing discards are not offered
+  jev_proxy: null                   # Astrill system tunnel; does not go through an application-level HTTP proxy
+  action_margin_seconds: 1.0      # Decision reserve margin, must be >0 and < rules.turn_seconds(7)
+  max_decision_age: 10            # Decision is invalidated after observation exceeds this many seconds
+execution:
+  hand_click_count: 2          # User confirmed that the Steam client hand requires a double-click to switch tiles; buttons/menus remain single-click
+  inter_click_seconds: 0.05
+  mouse_press_seconds: 0.05     # Press spans a Unity render frame, then release; upper limit 0.2 seconds
+  verification_timeout: 4.0       # Action verification polling duration after click
+  target_tolerance: 0.02          # Allowed target displacement between decision and click (normalized, (0, 0.2])
+buttons:
+  templates: artifacts/templates/buttons
+  # Interaction button template labels always use logical names, mapped to client button text as follows:
+  #   pon=pon kan=kan tsumo=tsumo 栄和=ron (button text is the two characters "栄和", templates directly use the ron label,
+  #   there is no ron/tsumo same-character ambiguity) riichi=riichi nuki=nuki 跳過=pass 九種九牌=abort
+  # Mask calibration basis (artifacts/roi/action-survey/ measured on frames 615/630/6735/6750):
+  #   Table background is hue≈108-111 high-saturation blue; button background hue is in 1-6 (red)/15-30 (gray)/
+  #   142-170 (purple)/about 90 (cyan). The lower hue wrap interval [125..179]∪[0..95] is
+  #   "exclude table blue with hue 96..124". Measured button candidate fill ratio is 0.38-0.60, threshold takes 0.25 with margin.
+  hsv_lower: [125, 10, 90]        # hue wrap lower bound: exclude table blue
+  hsv_upper: [95, 255, 255]       # hue wrap upper bound
+  width_fraction: [0.05, 0.9]     # Range of candidate connected-component width as a fraction of action_buttons ROI width
+  height_fraction: [0.15, 0.9]    # Range of candidate connected-component height fraction
+  minimum_fill_ratio: 0.25        # Minimum fill ratio of candidate connected component (measured 0.38-0.60)
+  normalized_size: [48, 48]       # Normalized size for template comparison
+  maximum_distance: 0.25          # Upper limit of template cosine distance
+  minimum_margin: 0.05            # Minimum gap between top two candidates
+notify:
+  enabled: true                   # Feishu alert for unknown interaction buttons; false means archive only
+  feishu_helper: "C:/Users/胡/.agents/skills/Feishu-Communicate-With-Codex/scripts/feishu_send.mjs"
+  chat_id: "oc_54dfa592aa8d0d5e5adefc017a969262"
+  node: "node"
+  proxy: null                     # Feishu direct connection; does not inherit the process's HTTP proxy
+  timeout_seconds: 10
+  queue_capacity: 32
+  shutdown_seconds: 3
+  max_attempts: 3
+  retry_seconds: 1

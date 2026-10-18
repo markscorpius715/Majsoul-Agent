@@ -1,0 +1,44 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Environments and caches
+.venv/
+.venv-gpu/
+.venv-ocr/
+.deps/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.pytest-*/
+.pytest_*/
+
+# Local evidence, runs and experiments (large, machine-specific)
+# Keep only what the live Agent loads at runtime.
+artifacts/*
+!artifacts/templates/
+!artifacts/numeric-ocr-study-20261010/
+artifacts/numeric-ocr-study-20261010/*
+!artifacts/numeric-ocr-study-20261010/en_PP-OCRv4_rec_mobile.onnx
+english-migration-work/
+models/
+
+# Model checkpoints exceed GitHub's 100 MB file limit
+*.pt
+*.pth
+
+# Datasets: keep the README, the manifests and the small reference screenshots
+datasets/raw/
+datasets/verified/
+datasets/rejected/
+datasets/golden_set/
+datasets/manifests/verified_samples.json
+datasets/manifests/training_queue.json
+
+# Local config and root-level scratch media
+configs/layout.local.json
+/*.png
+/*.mp4
+*.sqlite3
+tools/artifacts/

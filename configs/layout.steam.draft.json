@@ -1,0 +1,126 @@
+{
+  "regions": {
+    "hand": {
+      "rect": [
+        0.112305,
+        0.845439,
+        0.761719,
+        0.995777
+      ],
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "draw": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "dora": {
+      "rect": [
+        0.012207,
+        0.035473,
+        0.163086,
+        0.115709
+      ],
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "river:0": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "river:1": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "river:2": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "meld:0": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "meld:1": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "meld:2": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "nuki:0": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "nuki:1": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    },
+    "nuki:2": {
+      "rect": null,
+      "row_axis": "y",
+      "row_direction": 1,
+      "tile_direction": 1
+    }
+  },
+  "labels": {
+    "1m": "tile:1m",
+    "9m": "tile:9m",
+    "1p": "tile:1p",
+    "2p": "tile:2p",
+    "3p": "tile:3p",
+    "4p": "tile:4p",
+    "5p": "tile:5p",
+    "6p": "tile:6p",
+    "7p": "tile:7p",
+    "8p": "tile:8p",
+    "9p": "tile:9p",
+    "1s": "tile:1s",
+    "2s": "tile:2s",
+    "3s": "tile:3s",
+    "4s": "tile:4s",
+    "5s": "tile:5s",
+    "6s": "tile:6s",
+    "7s": "tile:7s",
+    "8s": "tile:8s",
+    "9s": "tile:9s",
+    "1z": "tile:1z",
+    "2z": "tile:2z",
+    "3z": "tile:3z",
+    "4z": "tile:4z",
+    "5z": "tile:5z",
+    "6z": "tile:6z",
+    "7z": "tile:7z",
+    "0p": "tile:0p",
+    "0s": "tile:0s"
+  },
+  "confidence": 0.8,
+  "proposal_confidence": 0.15,
+  "duplicate_iou": 0.6,
+  "stable_frames": 2,
+  "max_decision_age": 10.0,
+  "verification_timeout": 4.0,
+  "poll_seconds": 0.2,
+  "target_tolerance": 0.02,
+  "calibration_notes": "Steam screenshot reference only. Hand/dora measured; all null regions require real client calibration. Client area only, excluding title bar. Players: 0=self, 1=top, 2=left. Not runnable until calibration is complete."
+}

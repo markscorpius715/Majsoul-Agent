@@ -1,0 +1,21 @@
+schema_version: 1
+templates: artifacts/templates/countdown
+roi: countdown
+white:
+  lower: [0, 0, 160]
+  upper: [179, 75, 255]
+gold:
+  lower: [5, 80, 140]
+  upper: [40, 255, 255]
+minimum_height_fraction: 0.20
+minimum_area_fraction: 0.0002
+baseline_tolerance: 0.25
+base_gap_ratio: 0.55
+normalized_size: [32, 48]
+maximum_distance: 0.22
+minimum_margin: 0.04
+# A complete legal frame is sufficient to freeze a live decision snapshot.
+confirmations: 1
+# Integer display may round up; never budget the entire displayed final second.
+quantization_margin_seconds: 1.0
+maximum_sample_gap_seconds: 2.0

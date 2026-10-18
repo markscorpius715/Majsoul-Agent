@@ -1,0 +1,35 @@
+[
+  {
+    "source": "artifacts\\templates\\results\\original\\rank_1.png",
+    "output": "artifacts\\templates\\results\\rank_1.png",
+    "crop": [
+      35,
+      0,
+      111,
+      184
+    ],
+    "review": "Keep numeral and rank glyph; remove adjacent avatar/table/character-animation background."
+  },
+  {
+    "source": "artifacts\\templates\\results\\original\\rank_2.png",
+    "output": "artifacts\\templates\\results\\rank_2.png",
+    "crop": [
+      36,
+      0,
+      115,
+      182
+    ],
+    "review": "Keep numeral and rank glyph; remove adjacent avatar/table/character-animation background."
+  },
+  {
+    "source": "artifacts\\templates\\results\\original\\rank_3.png",
+    "output": "artifacts\\templates\\results\\rank_3.png",
+    "crop": [
+      38,
+      0,
+      122,
+      175
+    ],
+    "review": "Keep numeral and rank glyph; remove adjacent avatar/table/character-animation background."
+  }
+]

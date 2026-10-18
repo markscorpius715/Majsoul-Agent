@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "roi": [
+    0.73,
+    0.67,
+    0.9,
+    0.815
+  ],
+  "capture_contract": "whole window including title bar; imported desktop screenshots use explicitly reviewed stretch",
+  "templates": [
+    {
+      "label": "1",
+      "source": "datasets/拔北.jpg",
+      "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+      "color": "white",
+      "box": [
+        2027,
+        1088,
+        2069,
+        1223
+      ],
+      "output": "artifacts\\templates\\countdown\\1\\reviewed-0.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "plus",
+      "source": "datasets/拔北.jpg",
+      "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+      "color": "gold",
+      "box": [
+        2112,
+        1146,
+        2160,
+        1208
+      ],
+      "output": "artifacts\\templates\\countdown\\plus\\reviewed-1.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "2",
+      "source": "datasets/拔北.jpg",
+      "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+      "color": "gold",
+      "box": [
+        2169,
+        1136,
+        2223,
+        1214
+      ],
+      "output": "artifacts\\templates\\countdown\\2\\reviewed-2.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "0",
+      "source": "datasets/拔北.jpg",
+      "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+      "color": "gold",
+      "box": [
+        2231,
+        1137,
+        2282,
+        1214
+      ],
+      "output": "artifacts\\templates\\countdown\\0\\reviewed-3.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "3",
+      "source": "datasets/自摸.png",
+      "source_sha256": "772649abd03d6413e9f0b072146097ad5fa579ca2c4d070168cb54e4ad082eb6",
+      "color": "white",
+      "box": [
+        2002,
+        1089,
+        2086,
+        1218
+      ],
+      "output": "artifacts\\templates\\countdown\\3\\reviewed-4.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "9",
+      "source": "datasets/自摸.png",
+      "source_sha256": "772649abd03d6413e9f0b072146097ad5fa579ca2c4d070168cb54e4ad082eb6",
+      "color": "gold",
+      "box": [
+        2233,
+        1137,
+        2283,
+        1215
+      ],
+      "output": "artifacts\\templates\\countdown\\9\\reviewed-5.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "8",
+      "source": "datasets/立直.jpg",
+      "source_sha256": "cb1974b00b9366f923a93fa9a7e10263bbba3cb571565d77ebe6ffd3c8738a7a",
+      "color": "gold",
+      "box": [
+        2016,
+        1101,
+        2101,
+        1224
+      ],
+      "output": "artifacts\\templates\\countdown\\8\\reviewed-6.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "4",
+      "source": "artifacts/roi/action-survey/frame_630.png",
+      "source_sha256": "7ecba2ee832fefd82f247d06ec481b3af055f8d020abe5907faa99bfcdf26d00",
+      "color": "white",
+      "box": [
+        1505,
+        825,
+        1563,
+        925
+      ],
+      "output": "artifacts\\templates\\countdown\\4\\reviewed-7.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "5",
+      "source": "artifacts/roi/action-survey/frame_630.png",
+      "source_sha256": "7ecba2ee832fefd82f247d06ec481b3af055f8d020abe5907faa99bfcdf26d00",
+      "color": "gold",
+      "box": [
+        1632,
+        860,
+        1672,
+        920
+      ],
+      "output": "artifacts\\templates\\countdown\\5\\reviewed-8.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "6",
+      "source": "artifacts/live/workflow-audit/countdown-survey/video-frame-15.png",
+      "source_sha256": "186cb798fda988b918f277fe071e1336555e8a39424a81ad07cc8a652b133a0c",
+      "color": "gold",
+      "box": [
+        1508,
+        828,
+        1564,
+        918
+      ],
+      "output": "artifacts\\templates\\countdown\\6\\reviewed-9.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "7",
+      "source": "artifacts/roi/action-survey/frame_0.png",
+      "source_sha256": "1eb487052069debb694cbe66fc393c51bcc55a1b7e741e31746ed90368c7760a",
+      "color": "gold",
+      "box": [
+        1516,
+        828,
+        1572,
+        918
+      ],
+      "output": "artifacts\\templates\\countdown\\7\\reviewed-10.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "5",
+      "source": "artifacts/live/workflow-audit/countdown-survey/video-frame-105.png",
+      "source_sha256": "98690bd9ff477a4b16ecdb126fe8b9a7cd9c2b958fc9df2bc4ac4248baf49371",
+      "color": "white",
+      "box": [
+        1506,
+        823,
+        1571,
+        925
+      ],
+      "output": "artifacts\\templates\\countdown\\5\\reviewed-11.png",
+      "review": "Visually reviewed real countdown glyph; development import, not a frozen acceptance sample."
+    },
+    {
+      "label": "1",
+      "source": "datasets/立直.jpg",
+      "source_sha256": "cb1974b00b9366f923a93fa9a7e10263bbba3cb571565d77ebe6ffd3c8738a7a",
+      "color": "gold",
+      "box": [
+        1900,
+        1104,
+        1980,
+        1226
+      ],
+      "output": "artifacts\\templates\\countdown\\1\\reviewed-12.png",
+      "review": "Visually reviewed complete real countdown glyph with crop margins."
+    },
+    {
+      "label": "4",
+      "source": "artifacts/roi/action-survey/frame_630.png",
+      "source_sha256": "7ecba2ee832fefd82f247d06ec481b3af055f8d020abe5907faa99bfcdf26d00",
+      "color": "white",
+      "box": [
+        1505,
+        825,
+        1563,
+        925
+      ],
+      "output": "artifacts\\templates\\countdown\\4\\reviewed-13.png",
+      "review": "Visually reviewed complete real countdown glyph with crop margins."
+    }
+  ]
+}

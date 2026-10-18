@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "selection_cancel",
+  "template": "artifacts/templates/ui-selection/cancel-20261010.png",
+  "template_sha256": "7f383df3a139e94631adacb44cd1f2cace6f42794c5e7c3a4c66e3436cb57f0f",
+  "source_frame": "artifacts/live/workflow-audit/selection-source-20261009/riichi-probe/0106450.png",
+  "source_sha256": "c72bf3f7c9033c2d2bbac1b7efd62b4185ac281856ce6252068d6d5dfb14ed83",
+  "source_frame_index": 106450,
+  "source_video_manifest": "datasets/manifests/sources/captured_yonma_20260923_005221.json",
+  "source_size": [
+    3070,
+    1822
+  ],
+  "crop_box": [
+    2257,
+    1387,
+    2348,
+    1481
+  ],
+  "player_count": 4,
+  "mode": "yonma",
+  "reviewed_by": "Codex: source pixels and connected glyph bounds, not a new human training label",
+  "semantic_scope": "cancel marker only; riichi phase requires a sent input and unchanged hand",
+  "search_scope": "existing reviewed countdown ROI; no added click region"
+}

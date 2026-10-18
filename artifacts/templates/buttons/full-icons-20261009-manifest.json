@@ -1,0 +1,163 @@
+[
+  {
+    "label": "nuki",
+    "source": "datasets/拔北.jpg",
+    "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+    "box": {
+      "x1": 1188,
+      "y1": 1107,
+      "x2": 1511,
+      "y2": 1227
+    },
+    "output": "artifacts/templates/buttons/nuki/source-full-20261009.png",
+    "sha256": "009de07a29f069119915f4c65989c62f82a9aa4a5c4ec494a517d81d63d15016",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  },
+  {
+    "label": "abort",
+    "source": "datasets/流局.jpg",
+    "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+    "box": {
+      "x1": 805,
+      "y1": 1100,
+      "x2": 1125,
+      "y2": 1226
+    },
+    "output": "artifacts/templates/buttons/abort/source-full-20261009.png",
+    "sha256": "b1767906deb99b5164ecec631bd9daa4ce566e96f02dd292affa6303d9b8f10e",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  },
+  {
+    "label": "riichi",
+    "source": "datasets/立直.jpg",
+    "source_sha256": "cb1974b00b9366f923a93fa9a7e10263bbba3cb571565d77ebe6ffd3c8738a7a",
+    "box": {
+      "x1": 1226,
+      "y1": 1098,
+      "x2": 1522,
+      "y2": 1224
+    },
+    "output": "artifacts/templates/buttons/riichi/source-full-20261009.png",
+    "sha256": "7e55a4af9c222f2d290746b1a65810e8cde1c71b8d4278de1eff02b57cf6e4c1",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  },
+  {
+    "label": "pass",
+    "source": "datasets/拔北.jpg",
+    "source_sha256": "fb33971aa95156fbf15c69ece3c3a2493648be4fc1f28d9ebb3ebaf0516f508e",
+    "box": {
+      "x1": 1735,
+      "y1": 1107,
+      "x2": 1825,
+      "y2": 1194
+    },
+    "output": "artifacts/templates/buttons/pass/source-full-20261009.png",
+    "sha256": "65202a34ad7286c65b7fe3cdde52f11136abfac8642851d91431db231c2bfea0",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  },
+  {
+    "label": "tsumo",
+    "source": "datasets/自摸.png",
+    "source_sha256": "772649abd03d6413e9f0b072146097ad5fa579ca2c4d070168cb54e4ad082eb6",
+    "box": {
+      "x1": 1189,
+      "y1": 1076,
+      "x2": 1511,
+      "y2": 1226
+    },
+    "output": "artifacts/templates/buttons/tsumo/source-full-20261009.png",
+    "sha256": "cef787ec4ce9418e9fdfbbd109a38e4649f8e77708699077453af9ea9fb06ea9",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  },
+  {
+    "label": "ron",
+    "source": "和.png",
+    "source_sha256": "95f5f80fa010ef32d6343fd1c09679e67f4affc08c598a6f9a60e1909ee5d03d",
+    "box": {
+      "x1": 1215,
+      "y1": 1070,
+      "x2": 1511,
+      "y2": 1213
+    },
+    "output": "artifacts/templates/buttons/ron/source-full-20261009.png",
+    "sha256": "c6ba2914e62bb82607e77ea248383be4cbfe5d3fc6d3b112041459f87e137c88",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  },
+  {
+    "label": "pon",
+    "source": "和.png",
+    "source_sha256": "95f5f80fa010ef32d6343fd1c09679e67f4affc08c598a6f9a60e1909ee5d03d",
+    "box": {
+      "x1": 904,
+      "y1": 1105,
+      "x2": 1022,
+      "y2": 1194
+    },
+    "output": "artifacts/templates/buttons/pon/source-full-20261009.png",
+    "sha256": "7a10c6a9d15a156637225d94ddcd32504a922d16d37cf15907fe12cae2a34a97",
+    "source_roi": [
+      0.2864583333333333,
+      0.65,
+      0.7552083333333334,
+      0.8166089965397924
+    ],
+    "projection": "reviewed_stretch",
+    "clipped": false,
+    "extraction": "extract_button_candidates/v1",
+    "review": "Codex inspected exported candidate pixels; logical label retained from existing reviewed source manifest; no ROI boundary clipping"
+  }
+]

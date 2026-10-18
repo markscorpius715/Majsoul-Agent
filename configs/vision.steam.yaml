@@ -1,0 +1,179 @@
+schema_version: 1
+tile_back:
+  lower: [15, 100, 130]
+  upper: [40, 255, 255]
+  minimum_fill_ratio: 0.6
+tile_face:
+  saturation_max: 105
+  value_min: 130
+  minimum_fill_ratio: 0.18
+  upright_minimum_aspect_ratio: 0.85
+hand:
+  width_fraction:
+  - 0.045
+  - 0.09
+  height_fraction:
+  - 0.55
+  - 0.95
+  max_tiles: 14
+  drawn_gap_ratio: 1.2
+river:
+  outline_opening_fraction: 0.35
+  width_fraction:
+  - 0.1
+  - 0.22
+  height_fraction:
+  - 0.15
+  - 0.29
+  max_tiles: 24
+  row_tolerance_ratio: 0.6
+  maximum_row_gap_ratio: 1.5
+  horizontal_aspect_ratio: 1.15
+slot_rotation_degrees:
+  bottom: 0
+  top: 180
+  left: -90
+  right: 90
+dora:
+  width_fraction:
+  - 0.12
+  - 0.25
+  height_fraction:
+  - 0.55
+  - 0.98
+  max_tiles: 5
+kita:
+  bottom:
+    width_fraction:
+    - 0.15
+    - 0.35
+    height_fraction:
+    - 0.4
+    - 0.9
+    max_tiles: 4
+  top:
+    width_fraction:
+    - 0.12
+    - 0.32
+    height_fraction:
+    - 0.2
+    - 0.6
+    max_tiles: 4
+  left:
+    width_fraction:
+    - 0.1
+    - 0.35
+    height_fraction:
+    - 0.2
+    - 0.75
+    max_tiles: 4
+  right:
+    width_fraction:
+    - 0.1
+    - 0.35
+    height_fraction:
+    - 0.2
+    - 0.75
+    max_tiles: 4
+meld:
+  group_gap_ratio: 1.2
+  bottom:
+    width_fraction:
+    - 0.04
+    - 0.075
+    height_fraction:
+    - 0.22
+    - 0.46
+    max_tiles: 16
+  top:
+    width_fraction:
+    - 0.04
+    - 0.08
+    height_fraction:
+    - 0.35
+    - 0.7
+    max_tiles: 16
+  left:
+    width_fraction:
+    - 0.025
+    - 0.11
+    height_fraction:
+    - 0.12
+    - 0.38
+    max_tiles: 16
+  right:
+    width_fraction:
+    - 0.025
+    - 0.11
+    height_fraction:
+    - 0.12
+    - 0.38
+    max_tiles: 16
+classifier:
+  normalized_size:
+  - 64
+  - 96
+  maximum_distance: 0.3
+  minimum_margin: 0.04
+metadata:
+  normalized_size:
+  - 32
+  - 48
+  maximum_distance: 0.24
+  minimum_margin: 0.035
+  dealer_red:
+    lower:
+    - 170
+    - 70
+    - 70
+    upper:
+    - 10
+    - 255
+    - 255
+  dealer_minimum_fill_ratio: 0.2
+  dealer_glyph_value_max: 110
+  styles:
+    score:
+      lower:
+      - 5
+      - 70
+      - 120
+      upper:
+      - 35
+      - 255
+      - 255
+      minimum_height_fraction: 0.4
+      minimum_area: 20
+    center:
+      lower:
+      - 70
+      - 50
+      - 80
+      upper:
+      - 105
+      - 255
+      - 255
+      minimum_height_fraction: 0.35
+      minimum_area: 20
+    counter:
+      lower:
+      - 0
+      - 0
+      - 140
+      upper:
+      - 179
+      - 100
+      - 255
+      minimum_height_fraction: 0.35
+      minimum_area: 20
+    seat:
+      lower:
+      - 0
+      - 0
+      - 100
+      upper:
+      - 179
+      - 100
+      - 255
+      minimum_height_fraction: 0.35
+      minimum_area: 50

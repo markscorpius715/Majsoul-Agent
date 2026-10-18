@@ -1,0 +1,20 @@
+{
+  "source": "artifacts\\live\\acceptance-20261010\\agent-recheck-131424\\diagnostics\\000096.jpg",
+  "source_sha256": "cb57b27efe142b175c9bea764a6477e37236982a6a607e3085766173b06e1e1d",
+  "label": "6",
+  "region": "remaining_tiles",
+  "box": {
+    "x1": 1315,
+    "y1": 654,
+    "x2": 1341,
+    "y2": 680
+  },
+  "template": "artifacts\\templates\\glyphs\\6\\steam-remaining-20261010.png",
+  "template_sha256": "c7c2f8ddd6edb10d761a5b421da036f6a9b16fcde03ce2fa76bc95450fb3ff00",
+  "player_count": 3,
+  "mode": "sanma_east",
+  "review": "assistant visually inspected the real full Steam frame: remaining tiles reads 46",
+  "synthetic": false,
+  "training": false,
+  "thresholds_unchanged": true
+}

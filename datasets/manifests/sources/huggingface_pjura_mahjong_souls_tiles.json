@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "source_id": "huggingface_pjura_mahjong_souls_tiles",
+  "repository": "pjura/mahjong_souls_tiles",
+  "revision": "8c0f22e7c6b64be55bb1d2767fe1a63981788de7",
+  "license": "Apache-2.0",
+  "task": "image_classification",
+  "acquired_at": "2026-09-22",
+  "acquisition": "Hugging Face Dataset Viewer parquet URLs via local proxy port 7890",
+  "status": "downloaded_audited_not_ingested",
+  "files": [
+    {
+      "split": "train",
+      "path": "datasets/raw/public/huggingface_pjura_mahjong_souls_tiles/train-0000.parquet",
+      "rows": 1080,
+      "bytes": 9483664,
+      "sha256": "36ca36ed4d1589d54524e3473dadb0d10bf7840a0fb1d05cc1b340590203513e"
+    },
+    {
+      "split": "test",
+      "path": "datasets/raw/public/huggingface_pjura_mahjong_souls_tiles/test-0000.parquet",
+      "rows": 897,
+      "bytes": 11944417,
+      "sha256": "ae4b6f78ccba9f05144f3f9b7b6ff61c14761d1c175805dee3f85ea0c29f0580"
+    }
+  ],
+  "external_to_internal_labels": {
+    "1b": "1s",
+    "2b": "2s",
+    "3b": "3s",
+    "4b": "4s",
+    "5b": "5s",
+    "6b": "6s",
+    "7b": "7s",
+    "8b": "8s",
+    "9b": "9s",
+    "1n": "1m",
+    "2n": "2m",
+    "3n": "3m",
+    "4n": "4m",
+    "5n": "5m",
+    "6n": "6m",
+    "7n": "7m",
+    "8n": "8m",
+    "9n": "9m",
+    "1p": "1p",
+    "2p": "2p",
+    "3p": "3p",
+    "4p": "4p",
+    "5p": "5p",
+    "6p": "6p",
+    "7p": "7p",
+    "8p": "8p",
+    "9p": "9p",
+    "ew": "1z",
+    "sw": "2z",
+    "ww": "3z",
+    "nw": "4z",
+    "wd": "5z",
+    "gd": "6z",
+    "rd": "7z"
+  },
+  "mapping_evidence": "artifacts/datasets/huggingface_pjura_mahjong_souls_tiles/contact-sheet.png",
+  "audit_report": "artifacts/datasets/huggingface_pjura_mahjong_souls_tiles/audit.json",
+  "audit_findings": {
+    "decoded_rows": 1977,
+    "invalid_images": 0,
+    "class_count": 34,
+    "red_five_classes": 0,
+    "raw_duplicate_groups": 39,
+    "raw_cross_split_duplicate_groups": 34,
+    "raw_cross_label_duplicate_groups": 0,
+    "pixel_duplicate_groups": 39,
+    "pixel_cross_split_duplicate_groups": 34,
+    "near_cross_split_pairs_at_dhash_hamming_1": 62,
+    "near_cross_label_pairs_at_dhash_hamming_1": 47
+  },
+  "admission": {
+    "training_allowed": false,
+    "provided_test_split_allowed_as_golden": false,
+    "required_before_training": [
+      "Remove exact and reviewed near duplicates before rebuilding splits",
+      "Keep all related variants in the same split",
+      "Add separately verified red-five samples",
+      "Protect a project-owned golden set from all training splits",
+      "Review visually truncated and atypically cropped samples"
+    ]
+  },
+  "notes": "The original train/test split contains at least one exact cross-split duplicate for every external class. Difference-hash matches are review candidates, not automatic duplicate proof."
+}

@@ -1,0 +1,9 @@
+schema_version: 1
+model: artifacts/numeric-ocr-study-20261010/en_PP-OCRv4_rec_mobile.onnx
+sha256: e8770c967605983d1570cdf5352041dfb68fa0c21664f49f47b155abd3e0e318
+minimum_confidence: 0.95
+maximum_digits: 3
+cache_size: 128
+# Layout starts synchronously; subsequent numeric OCR cannot stall live input.
+asynchronous: true
+retry_seconds: 0.5

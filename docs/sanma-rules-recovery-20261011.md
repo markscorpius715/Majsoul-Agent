@@ -1,0 +1,37 @@
+# Sanma prompts, riichi recognition, and ten-second local fallback
+
+Modified on 2026-10-11. Applicable to the Agent on the next startup; this time no new live match was entered.
+
+## Common rule prompts
+
+Jev Choice's `instructions` and DeepSeek's system message share `majsoul/policy_prompt.py`, version `sanma-rules-20261011-v1`. The rule card includes the sanma tile set, hand structure, chi/pon/kan, north extraction, riichi, furiten, dora cycling, han values of common yaku and the difference between closed and open hands, yakuman, fu, and self-draw loss payment calculation.
+
+For offensive discards, first compare the shanten after discarding; only when the shanten is the same compare ukeire; a larger ukeire at a higher shanten must not be used to conceal a shanten regression. Defensive folding based on real threats is allowed, and model candidates are not forcibly deleted. North extraction is explicitly extracting North, drawing a replacement tile, and adding one han on win without breaking closed hand; it is not itself a yaku; button candidates have separate structured effects, preserving the choice to keep North for hand building.
+
+The actual `configs/sanma.json` is passed in with state and the rule card, overriding general variant descriptions. Items not confirmed in the current configuration, such as double yakuman, kiriage mangan, and cumulative yakuman, remain unconfirmed, and the four-player payment table must not be treated as the sanma payment table. Supplementary rule prompts do not equal a guarantee that the model will necessarily follow them or that live strategy acceptance has been passed.
+
+Each run directory saves `policy-rules.txt`, and each `decisions.jsonl` entry saves the rule version/hash/relative path and that instance's state/actions, allowing reconstruction of the dynamic input in the prompt. DeepSeek additionally includes the output requirement to "return only action_id JSON". No credentials or request headers are saved.
+
+General yaku/fu cross-reference [WRC official player materials](https://www.worldriichi.org/player-materials)、[used by this project mahjong library's fu calculation source code](https://github.com/MahjongRepository/mahjong/blob/master/mahjong/hand_calculating/fu.py)。handle sanma platform differences using the locally confirmed configuration，do not treat WRC four-player optional rules ported as Mahjong Soul fact.
+
+## Riichi
+
+`configs/roi.steam.yaml` adds `riichi_*` ROIs for four physical slots; x/y independent normalized scaling with fixed coordinates is used. At the first hand of the match, with zero honba and zero riichi sticks, the tile wall near its initial count, the hand known, and no discards/melds/north extraction by any player, freeze the empty-stick baseline and save it to the run directory `riichi-baseline/`. Joining midway must not learn existing riichi sticks as empty sticks.
+
+Compare the average difference and the proportion of changed pixels, while also requiring the appearance of white sticks/red dots. Riichi is locked only after three consecutive independent time samples, with consistent appearance in adjacent samples and intervals not exceeding the limit; repeated processing of the same frame does not accumulate. A sideways declared tile is independent evidence, using the discard pond direction recognized after rotation by physical slot; if the region is erroneous, this evidence is not added. A confirmed riichi is maintained for the entire hand, declarations are cleared when the hand changes, and the full-match baseline is retained. When there is no settlement UI, consecutive new round_ids can also clear old declarations. Geometric changes do not relearn a midway baseline.
+
+`PlayerObservation.riichi/riichi_evidence` stores attribution and measurement evidence; the Tracker absorbs the signal, which ultimately enters the model's `state.riichi`. The global riichi stick count and whether each player is in riichi are different fields. The left and right player attribution has been verified offline using the 48-frame empty table and 897-frame double-riichi images from the last test, and new continuous live frames are still needed to verify false positives and false negatives.
+
+## Local timeout fallback
+
+The production configuration `emergency.enabled=true`, with a threshold of ten seconds. Layout recognition and the main loop both run the local watchdog first, reading only the hand, buttons, and countdown, without waiting for the global Tracker, metadata OCR, discard pond, north extraction region, or model results. The ten seconds are timed from the first recognition to our side's action window; when the countdown cannot be recognized temporarily, a clear drawn tile position or action button still starts the timer, but does not authorize a click.
+
+After timeout, first cancel the old model request and update the epoch, then re-screenshot to confirm the current hand/buttons, active countdown, window geometry, target displacement, and screenshot age. If there is a recognized skip button, click skip once; if there is no interactive button and the hand is legal and the drawn tile position is clear, double-click the just-drawn tile. After skipping, if a discard is still needed, do not wait another ten seconds. Discard verification only requires precisely removing the target physical tile, preserving the distinction between red fives and normal fives, and does not depend on the discard remaining in the discard pond.
+
+In cases such as no drawn tile position after pon, unknown hand, unclear/expired countdown, only unknown interactive buttons appearing, or riichi tile selection not allowing a drawn tile target, do not guess coordinates; record `emergency_unavailable`, and the protected acceptance entry continues to use the original automatic takeover protection. If the safe fallback verification is unclear/input fails, record `emergency_failed`, which is also handed over to takeover. The normal startup command itself does not have the original supervisor's automatic option protection, and the full live match should still use the existing protected entry.
+
+After success, mark as pending rebuild; when it is confirmed that the hand has returned to the waiting tile count, there are no buttons, and our side's countdown is no longer active, cancel the old request, rebuild the Tracker/strategy run state, and continue global recognition. This rebuild does not generate unknown history and does not pretend that "the global state has been restored"; a legal snapshot must be obtained again before calling the model.
+
+Logs include `emergency_started/clicked/verified/unavailable/preflight_abort/failed/state_rebuild`, and screenshots before and after the tile change are in `frames/emergency-*`. The original acceptance supervisor's eight-second stagnation takeover has yielded execution time to runs with the local watchdog enabled; original events such as model failure are retained, letting the local fallback try first, and automatically taking over if it fails. User stop still executes the existing per-hand protection cleanup logic through the end of the match.
+
+Boundary: the current watchdog and clicking are executed serially by a single control thread, so there are no two clickers competing for control; model asynchrony and global visual gating failure will not block this fallback. OS freezes, screenshot/local recognition functions themselves not returning, and the entire process being force-killed are outside the guarantee scope of this thread watchdog.

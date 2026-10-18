@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "dataset_id": "dataset_v0",
+  "status": "bootstrap",
+  "sources": [
+    {
+      "id": "roboflow_core_mahjong_soul_v1",
+      "url": "https://universe.roboflow.com/core-wlsb7/mahjong-soul-8bdp2",
+      "domain": "mahjong_soul",
+      "task": "object_detection",
+      "license": "CC-BY-4.0",
+      "reported_images": 178,
+      "reported_classes": 38,
+      "status": "metadata_reviewed_not_ingested",
+      "weight_policy": "high_after_manual_audit",
+      "open_questions": [
+        "Why the overview exposes 70 images while dataset version 1 reports 178",
+        "Remove or explain the extra class named test",
+        "Verify export annotations and attribution requirements"
+      ]
+    },
+    {
+      "id": "huggingface_pjura_mahjong_souls_tiles",
+      "url": "https://huggingface.co/datasets/pjura/mahjong_souls_tiles",
+      "domain": "mahjong_soul",
+      "task": "image_classification",
+      "license": "Apache-2.0",
+      "reported_rows": 1977,
+      "reported_classes": 34,
+      "status": "downloaded_audited_not_ingested",
+      "weight_policy": "high_after_class_map_audit",
+      "source_manifest": "sources/huggingface_pjura_mahjong_souls_tiles.json",
+      "open_questions": [
+        "Keep red fives sourced separately because this dataset exposes 34 classes",
+        "Deduplicate and rebuild train/validation splits because all 34 classes have an exact cross-split duplicate",
+        "Review truncated and atypically cropped samples before admission"
+      ]
+    },
+    {
+      "id": "github_camerash_mahjong_dataset",
+      "url": "https://github.com/Camerash/mahjong-dataset",
+      "domain": "generic_physical_mahjong",
+      "task": "image_classification",
+      "repository_license": "MIT",
+      "status": "reference_only_not_approved",
+      "weight_policy": "do_not_train_until_provenance_review",
+      "open_questions": [
+        "README says images were mostly scraped from Google, eBay, and Alibaba",
+        "Repository license does not by itself prove rights to every source image",
+        "Chinese physical-tile domain differs from Mahjong Soul UI"
+      ]
+    },
+    {
+      "id": "captured_yonma_20260923_005221",
+      "domain": "mahjong_soul",
+      "task": "multi_task_visual_source",
+      "player_count": 4,
+      "mode": "yonma",
+      "status": "raw_crop_corpus_complete_review_required",
+      "source_manifest": "sources/captured_yonma_20260923_005221.json",
+      "raw_corpus": {
+        "manifest": "../raw/captured/captured_yonma_20260923_005221/tile_crops/manifest.json",
+        "timeline_stride_frames": 15,
+        "sampled_frames": 10840,
+        "candidate_crops": 425737,
+        "unique_crops": 32784,
+        "training_allowed": false
+      },
+      "weight_policy": "high_after_region_dedup_and_human_verification",
+      "allowed_scope": [
+        "shared_tile_faces",
+        "shared_glyphs",
+        "rivers",
+        "melds",
+        "right_screen_slot",
+        "generic_ui_states"
+      ],
+      "excluded_scope": [
+        "three_player_scores",
+        "kita",
+        "sanma_event_rules",
+        "automatic_pseudo_labels"
+      ]
+    }
+  ],
+  "sample_manifests": [
+    "verified_samples.json"
+  ],
+  "golden_set": null,
+  "notes": "Metadata reviewed through 2026-09-23. The Hugging Face parquet files were downloaded and audited locally but no public sample was admitted to training. The user-provided yonma video has a full-timeline, resumable raw crop corpus; animation/overlay candidates remain review-only and only individually human-verified shared-visual crops may enter training."
+}

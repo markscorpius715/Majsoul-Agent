@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "purpose": "reviewed_modal_recovery",
+  "modals": [
+    {
+      "name": "afk",
+      "point": [
+        0.5,
+        0.65
+      ],
+      "minimum_score": 0.96,
+      "maximum_error": 0.06,
+      "recoverable": true,
+      "source": "artifacts/live/acceptance-20261010/agent-recheck-172934/diagnostics/000623.jpg",
+      "source_sha256": "1c6fc9e9a11636bd37bc687b604fe9f5ad3f875d49d67f79855c29cba131a516",
+      "player_count": 3,
+      "mode": "sanma_east",
+      "anchors": [
+        {
+          "file": "afk-0.png",
+          "region": [
+            0.305,
+            0.44,
+            0.67,
+            0.518
+          ],
+          "sha256": "89332fcea6a7eba97fb8c4963c348b2a4c0cab98d9fedc8123c38cec400cb0d2"
+        },
+        {
+          "file": "afk-1.png",
+          "region": [
+            0.419,
+            0.615,
+            0.585,
+            0.69
+          ],
+          "sha256": "9ae23643791b754e9b84792e232466e46310a0dd49e9c980befb94b17274837d"
+        }
+      ]
+    },
+    {
+      "name": "connection",
+      "point": [
+        0.5,
+        0.65
+      ],
+      "minimum_score": 0.96,
+      "maximum_error": 0.06,
+      "recoverable": true,
+      "source": "artifacts/live/acceptance-20261010/agent-recheck-172934/operator-takeover-through-match/frames/00000018.jpg",
+      "source_sha256": "90484c563a3dc93f1ac6543a2e80f2eeb91eacfb4f7ca1c4ec8fbc2585b759fb",
+      "player_count": 3,
+      "mode": "sanma_east",
+      "anchors": [
+        {
+          "file": "connection-0.png",
+          "region": [
+            0.398,
+            0.455,
+            0.602,
+            0.505
+          ],
+          "sha256": "d859dc78afe394407706dd10383e9b92acfebaa83c9bb1a140260fcaa7f454fc"
+        },
+        {
+          "file": "connection-1.png",
+          "region": [
+            0.416,
+            0.608,
+            0.585,
+            0.685
+          ],
+          "sha256": "e676d47a6568df78e89eb746b8a49c423dbd2e513d8ebaa423a7e66ad1d9e1cf"
+        }
+      ]
+    },
+    {
+      "name": "table_connection",
+      "point": [
+        0.5,
+        0.65
+      ],
+      "minimum_score": 0.96,
+      "maximum_error": 0.06,
+      "recoverable": true,
+      "source": "artifacts/live/workflow-audit/acceptance-20261013/round10-current.png",
+      "source_sha256": "77fdf716fc6bda71d04b9cac60401b378355e4643d296b54a3f48307fa79ac50",
+      "player_count": 3,
+      "mode": "sanma_east",
+      "anchors": [
+        {
+          "file": "table_connection-0.png",
+          "region": [
+            0.4,
+            0.455,
+            0.6,
+            0.51
+          ],
+          "sha256": "618a765ef8cde2e798c29e3dfb331b44c7b2f1c8b9c192bb4020e146eca663dc"
+        },
+        {
+          "file": "table_connection-1.png",
+          "region": [
+            0.419,
+            0.615,
+            0.585,
+            0.685
+          ],
+          "sha256": "d25cac46ff64ac7120acf2916f4849253163d046736ad18d1e042aedd9e0e1b3"
+        }
+      ]
+    },
+    {
+      "name": "logout",
+      "point": [
+        0.5,
+        0.65
+      ],
+      "minimum_score": 0.96,
+      "maximum_error": 0.06,
+      "recoverable": false,
+      "source": "artifacts/live/workflow-audit/recovery-live-20261011-172420/preflight.png",
+      "source_sha256": "de56403a50bc0bff9a159fe8910748019e6a904f80eb568e24976c3b0cf281fa",
+      "player_count": 3,
+      "mode": "sanma_east",
+      "anchors": [
+        {
+          "file": "logout-0.png",
+          "region": [
+            0.314,
+            0.445,
+            0.675,
+            0.526
+          ],
+          "sha256": "193f0ea4511785e46949a8ef0e6ca9bab3c473c0b33eefbcbf3cbc0d31be8546"
+        },
+        {
+          "file": "logout-1.png",
+          "region": [
+            0.423,
+            0.615,
+            0.59,
+            0.69
+          ],
+          "sha256": "8252edcd182a2f8c36da81f3f5689d55eea116f2fe1b8c6af3d60b3f84657824"
+        }
+      ]
+    }
+  ]
+}

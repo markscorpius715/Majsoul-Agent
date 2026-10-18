@@ -1,0 +1,87 @@
+# Automatic play data collection: the client's built-in auto option plays on your behalf; the script takes background screenshots + archives keyframes/events.
+# Coordinates are normalized full-window (including title bar) coordinates, calibrated against a measured 2582×1550 window (2026-10-07).
+live_config: configs/live.steam.yaml
+match_result_templates:
+  - artifacts/templates/results/rank_1.png
+  - artifacts/templates/results/rank_2.png
+  - artifacts/templates/results/rank_3.png
+match_result_region: [0.3, 0.15, 0.65, 0.75]
+match_result_threshold: 0.85
+dataset_root: E:\majsoul_dataset
+poll_seconds: 0.5
+calibration_size: [2582, 1550]
+# Use stable UI anchors to control the loop, without relying on full hand/OCR or seat layout locking.
+table_template: artifacts/templates/collect/closed_tab.png
+drawer_template: artifacts/templates/collect/open_tab.png
+table_region: [0.0, 0.35, 0.10, 0.90]
+drawer_region: [0.12, 0.40, 0.20, 0.85]
+ui_threshold: 0.85
+ui_maximum_error: 0.15
+# After the confirm disappears, the table must be seen continuously; if confirm appears again during this period, the timer restarts.
+table_ready_seconds: 1.0
+toggle_retry_seconds: 3.0
+toggle_max_attempts: 3
+toggle_settle_seconds: 0.35
+# Animation occlusion is recorded as UNKNOWN; reversal is only allowed after continuous stable observation, and the number of observations has an upper limit.
+toggle_stable_samples: 2
+toggle_observation_attempts: 6
+toggle_sample_seconds: 0.15
+# In-memory ring buffer around event/button/UI changes; segments are written out only on trigger, not continuously persisted on a timer.
+reference_before_seconds: 3.0
+reference_after_seconds: 3.0
+reference_sample_seconds: 0.5
+reference_maximum_frames: 32
+dot_tolerance: 0.018
+off_dot_hsv_lower: [100, 50, 40]
+off_dot_hsv_upper: [125, 220, 170]
+dot_state_fraction: 0.6
+dot_detection:
+  green_min: 140
+  green_blue_delta: 30
+  green_red_delta: 40
+  area_fraction: [0.00006247, 0.0006247]
+  aspect_ratio: [0.5, 2.0]
+  minimum_fill: 0.62
+# The triangle toggle of the left-side auto-option drawer: when closed it is in the vertical strip at the left edge of the screen, when open it moves to the right edge with the panel
+triangle_point: [0.025, 0.761]
+triangle_open_point: [0.155, 0.626]
+# Option dot x; row y from top to bottom: auto-sort tiles/auto-win/no call pon chi kan/auto draw-discard/auto nuki North
+# (Calibrated 2026-10-07 from real-machine drawer screenshots, row spacing about 0.11)
+toggle_x: 0.0356
+toggle_rows:
+  auto_sort: 0.402
+  auto_win: 0.512
+  no_call: 0.622
+  auto_discard: 0.732
+  auto_kita: 0.843
+toggle_targets: [auto_win, no_call, auto_discard, auto_kita]
+# Green ON dot scan region (inside the drawer panel; when closed, the left-side green vertical strip text is filtered by fill ratio)
+dot_scan_region: [0.005, 0.30, 0.08, 0.92]
+# Bottom-right "Confirm" button appearance region; persisting longer than confirm_hold_seconds determines end of match.
+# In-hand confirm is blue background with gold text (auto-disappears after a 3-second countdown), end-of-match confirm is yellow background
+confirm_region: [0.84, 0.86, 0.97, 0.935]
+confirm_hold_seconds: 8
+confirm_click_seconds: 2.5
+confirm_focus_attempts: 3  # Focus failures where input was not sent; limited retries after re-observation.
+confirm_detection:
+  gold_lower: [15, 101, 151]
+  gold_upper: [40, 255, 255]
+  blue_lower: [90, 81, 81]
+  blue_upper: [115, 255, 255]
+  gold_body_fraction: 0.3
+  blue_body_fraction: 0.3
+  gold_text_fraction: 0.02
+# Main interface detection: ranked match banner template matching
+menu_template: artifacts/templates/menu/ranked_banner.png
+menu_region: [0.45, 0.12, 0.90, 0.50]
+menu_threshold: 0.55
+table_timeout_seconds: 300
+end_screen_timeout_seconds: 120
+unknown_timeout_seconds: 120
+# Keyframes: thumbnail change/semantic change/event/UI transition; static frames keep only heartbeat frames.
+perception_interval_seconds: 2.0
+visual_change_threshold: 0.025
+keyframe_min_seconds: 0.5
+heartbeat_seconds: 30.0
+image_sample_size: [320, 192]
+visual_change_grid: [32, 24]   # Local ROI change pooling, to avoid a full-image mean missing a newly discarded tile

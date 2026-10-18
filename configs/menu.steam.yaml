@@ -1,0 +1,21 @@
+# Mahjong Soul Steam client menu navigation: Ranked match → Bronze room → Sanma East (starts matching directly after clicking).
+# click is normalized full-window coordinates (0~1). 2026-10-07 converted to the PrintWindow full-window convention
+# (including title bar, e.g. maximized 2582×1550): from 2559×1599 fullscreen screenshot coordinates via
+# x'=(x*2559+9)/2582, y'=y*1599/1550. Normalized coordinates remain valid when the window size changes,
+# recalibration is required after a major UI overhaul.
+steps:
+- name: main_ranked
+  click: [0.722, 0.330]
+  mouse_press_seconds: 0.15 # On real hardware a 150ms single click has been confirmed to open; Unity menu key sampling margin
+  settle_seconds: 2.0
+- name: bronze
+  click: [0.720, 0.402]
+  mouse_press_seconds: 0.15
+  settle_seconds: 2.0
+- name: sanma_east
+  click: [0.724, 0.671]
+  mouse_press_seconds: 0.15
+  settle_seconds: 3.0
+table_timeout_seconds: 120
+focus_attempts: 3
+focus_retry_seconds: 0.25

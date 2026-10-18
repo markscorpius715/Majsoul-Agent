@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "source_id": "captured_yonma_20260923_005221",
+  "source_type": "captured_video",
+  "domain": "mahjong_soul",
+  "path": "屏幕录制 2026-09-23 005221.mp4",
+  "bytes": 16043032699,
+  "sha256": "ae5f519c022b3a805c317a9235b2625c52cc071b9457f9344d526ca506dfbbcb",
+  "video": {
+    "resolution": [
+      3070,
+      1822
+    ],
+    "fps": 30.0,
+    "frame_count": 162587,
+    "duration_seconds": 5419.566666666667,
+    "player_count": 4,
+    "mode": "yonma"
+  },
+  "provenance": {
+    "provided_by": "project_user",
+    "registered_at": "2026-09-23T02:17:54.046361+00:00",
+    "authorization": "user_authorized_for_related_content_recognition_training"
+  },
+  "status": "raw_crop_corpus_complete_review_required",
+  "derived_corpus": {
+    "manifest": "datasets/raw/captured/captured_yonma_20260923_005221/tile_crops/manifest.json",
+    "audit_sheet": "artifacts/datasets/captured_yonma_20260923_005221/crop-audit-final.png",
+    "stride_frames": 15,
+    "sampled_frames": 10840,
+    "accepted_frames": 10373,
+    "skipped_frames": 467,
+    "issue_frames": 7302,
+    "candidate_crops": 425737,
+    "unique_crops": 32784,
+    "duplicate_crops": 392953,
+    "crop_bytes": 463976589,
+    "training_allowed": false
+  },
+  "admission": {
+    "training_allowed": false,
+    "reason": "Samples require region extraction, deduplication and human verification",
+    "allowed_scope": [
+      "shared_tile_faces",
+      "shared_glyphs",
+      "rivers",
+      "melds",
+      "right_screen_slot",
+      "generic_ui_states"
+    ],
+    "excluded_scope": [
+      "three_player_scores",
+      "kita",
+      "sanma_event_rules",
+      "automatic_pseudo_labels"
+    ]
+  }
+}

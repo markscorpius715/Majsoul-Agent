@@ -1,0 +1,20 @@
+{
+  "source": "artifacts\\live\\acceptance-20261010\\agent-recheck-123649\\afk-after.png",
+  "source_sha256": "97447ec5548aee7fd77d499b45fcfdbee18cfed9ff65ae6d135e8bc8c94696cc",
+  "label": "5",
+  "region": "honba",
+  "box": {
+    "x1": 353,
+    "y1": 232,
+    "x2": 381,
+    "y2": 275
+  },
+  "template": "artifacts\\templates\\glyphs\\5\\steam-honba-20261010.png",
+  "template_sha256": "1f4f5ddd8dbd314cf721f3d80794e7f7d59e77fa979ebac2fe677c9e256de20a",
+  "player_count": 3,
+  "mode": "sanma_east",
+  "review": "assistant visual inspection of real Steam source: upper-left honba counter reads x5",
+  "synthetic": false,
+  "training": false,
+  "thresholds_unchanged": true
+}
